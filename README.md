@@ -13,12 +13,14 @@ This project is a Loan Management System built with Node.js, Express, and MongoD
 
 Step 1: Clone the Repository
 Clone the repository to your local machine using the following command:
-   ```bash
+
    git clone https://github.com/your-username/loan-management-system.git
    cd loan-management-system
-Step 2: Install Dependencies
+   
+## Step 2: Install Dependencies
 Install the necessary dependencies using npm:
-npm install
+
+      npm install
 
 Dependencies
 The following dependencies are used in this project:
