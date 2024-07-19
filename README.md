@@ -11,18 +11,12 @@ This project is a Loan Management System built with Node.js, Express, and MongoD
 
 ## Installation
 
-Step 1: Clone the Repository
-Clone the repository to your local machine using the following command:
-
-   git clone https://github.com/your-username/loan-management-system.git
-   cd loan-management-system
-   
-## Step 2: Install Dependencies
+## Step 1: Install Dependencies
 Install the necessary dependencies using npm:
 
       npm install
 
-Dependencies
+## Dependencies
 The following dependencies are used in this project:
 
 express: Web framework for Node.js
@@ -33,35 +27,36 @@ dotenv: Load environment variables from .env file
 ejs: Templating engine for rendering views
 
 
-To install these dependencies, run:
+## To install these dependencies, run:
 
-npm install express mongoose body-parser express-session dotenv ejs
+      npm install express mongoose body-parser express-session dotenv ejs
 
-Step 3: Set Up Environment Variables
+## Step 2: Set Up Environment Variables
 Create a .env file in the root directory of the project and add the following environment variables:
 
-SESSION_SECRET=your-secret-key
-ADMIN_EMAIL=admin@example.com
-ADMIN_PASSWORD=your-admin-password
+      SESSION_SECRET=your-secret-key
+      ADMIN_EMAIL=admin@example.com
+      ADMIN_PASSWORD=your-admin-password
 
-Step 4: Ensure MongoDB is Running
+## Step 3: Ensure MongoDB is Running
 Make sure the MongoDB service is running on your machine:
 
-mongod
+      mongod
 
-Step 5: Start the Server
+## Step 5: Start the Server
 Start the server using the following command:
 
-npm start
-    or
-node server.js
+      npm start
+      
+      node server.js
 
 
-Acknowledgements
-Node.js
-Express
-MongoDB
-EJS
+## Acknowledgements
+
+   Node.js
+   Express
+   MongoDB
+   EJS
 
 
 
