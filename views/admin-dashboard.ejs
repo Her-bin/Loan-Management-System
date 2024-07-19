@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+</head>
+<body>
+    <div class="dashboard">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hello Admin</h2>
+            </div>
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="/admin-approve"><i class="fas fa-check-circle"></i> Approve Loans</a></li>
+                <li><a href="/transaction-history"><i class="fas fa-history"></i> Transactions</a></li>
+                <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <header>
+                <div class="welcome">
+                    <h1>Welcome, <%= user.name %></h1>
+                    <p>Admin Dashboard</p>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-user-circle avatar"></i>
+                </div>
+            </header>
+            <section class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                    <div class="stat-info">
+                        <h3>Pending Loans</h3>
+                        <p><%= stats.pendingLoans %></p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-info">
+                        <h3>Approved Loans</h3>
+                        <p><%= stats.approvedLoans %></p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-chart-pie"></i></div>
+                    <div class="stat-info">
+                        <h3>Total Loans</h3>
+                        <p><%= stats.totalLoans %></p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-info">
+                        <h3>Total Users</h3>
+                        <p><%= stats.totalUsers %></p>
+                    </div>
+                </div>
+            </section>
+            <!-- Add more sections for charts or tables here -->
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approved Loans</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/approved-loans.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-check-circle"></i> Loan History</h1>
+    </header>
+    <main>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th><i class="fas fa-id-card"></i> Loan ID</th>
+                        <th><i class="fas fa-dollar-sign"></i> Amount</th>
+                        <th><i class="fas fa-percentage"></i> Interest Rate</th>
+                        <th><i class="fas fa-bullseye"></i> Purpose</th>
+                        <th><i class="fas fa-money-bill-wave"></i> Income</th>
+                        <th><i class="fas fa-calendar-alt"></i> Request Date</th>
+                        <th><i class="fas fa-clock"></i> Tenure (Years)</th>
+                        <th><i class="fas fa-calculator"></i> Monthly EMI</th>
+                        <th><i class="fas fa-piggy-bank"></i> Total Payment</th>
+                        <th><i class="fas fa-chart-line"></i> Total Interest</th>
+                        <th><i class="fas fa-info-circle"></i> Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (loans.length > 0) { %>
+                        <% loans.forEach(loan => { %>
+                            <% 
+                                const principal = loan.amount;
+                                const interestRate = loan.interestRate / 100 / 12;
+                                const tenureMonths = (new Date(loan.repayDate).getFullYear() - new Date(loan.requestDate).getFullYear()) * 12;
+                                const x = Math.pow(1 + interestRate, tenureMonths);
+                                const monthlyEMI = (principal * x * interestRate) / (x - 1);
+                                const totalPayment = monthlyEMI * tenureMonths;
+                                const totalInterest = totalPayment - principal;
+                            %>
+                            <tr>
+                                <td><%= loan._id %></td>
+                                <td><%= loan.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                                <td><%= loan.interestRate.toFixed(2) %>%</td>
+                                <td><%= loan.purpose %></td>
+                                <td><%= loan.income.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                                <td><%= loan.requestDate.toLocaleDateString() %></td>
+                                <td><%= (tenureMonths / 12) %> years</td>
+                                <td><%= monthlyEMI.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                                <td><%= totalPayment.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                                <td><%= totalInterest.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                                <td><span class="status <%= loan.status.toLowerCase() %>"><%= loan.status %></span></td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="11" style="text-align: center;">No approved loans found</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

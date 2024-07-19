@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Loan Status</title>
+    <link rel="stylesheet" href="/css/track-status.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Track Loan Status</h1>
+        <a href="/index" class="home-button">
+            <i class="fas fa-home"></i>
+        </a>
+    </header>
+    <main>
+        <section class="loan-tracker">
+            <h2>Check Loan Status</h2>
+            <form action="/track-status" method="post">
+                <label for="loanId">Loan ID:</label>
+                <input type="text" id="loanId" name="loanId" required>
+                <button type="submit">Track</button>
+            </form>
+        </section>
+
+        <section class="loan-details">
+            <h2>Loan Details</h2>
+            <% if (loan) { %>
+                <div class="loan-info">
+                    <p><strong>Loan ID:</strong> <%= loan._id %></p>
+                    <p><strong>Amount:</strong> ₹<%= loan.amount %></p>
+                    <p><strong>Loan Tenure:</strong> <%= loan.years %> years</p>
+                    <p><strong>Interest Rate:</strong> <%= loan.interestRate %>%</p>
+                    <p><strong>Status:</strong> <span class="status <%= loan.status.toLowerCase() %>"><%= loan.status %></span></p>
+                </div>
+            <% } else { %>
+                <p class="no-loan">No loan found with the provided ID.</p>
+            <% } %>
+        </section>
+
+        <section class="pending-loans">
+            <h2>Pending Loans</h2>
+            <% if (pendingLoans && pendingLoans.length > 0) { %>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Loan ID</th>
+                                <th>Amount</th>
+                                <th>Tenure (Years)</th>
+                                <th>Interest Rate</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% pendingLoans.forEach(pendingLoan => { %>
+                                <% 
+                                    const tenureMonths = (new Date(pendingLoan.repayDate).getFullYear() - new Date(pendingLoan.requestDate).getFullYear()) * 12;
+                                %>
+                                <tr>
+                                    <td><%= pendingLoan._id %></td>
+                                    <td>₹<%= pendingLoan.amount %></td>
+                                    <td><%= (tenureMonths / 12).toFixed(1) %></td>
+                                    <td><%= pendingLoan.interestRate %>%</td>
+                                    <td><span class="status <%= pendingLoan.status.toLowerCase() %>"><%= pendingLoan.status %></span></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            <% } else { %>
+                <p class="no-loan">No pending loans found.</p>
+            <% } %>
+        </section>
+    </main>
+</body>
+</html>

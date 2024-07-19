@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/transaction-history.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-history"></i> Transaction History</h1>
+    </header>
+    <main>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th><i class="fas fa-id-card"></i> Loan ID</th>
+                        <th><i class="fas fa-user"></i> Name</th>
+                        <th><i class="fas fa-envelope"></i> Email</th>
+                        <th><i class="fas fa-briefcase"></i> Occupation</th>
+                        <th><i class="fas fa-phone"></i> Phone No</th>
+                        <th><i class="fas fa-file-alt"></i> Proof</th>
+                        <th><i class="fas fa-fingerprint"></i> Proof No</th>
+                        <th><i class="fas fa-bullseye"></i> Purpose</th>
+                        <th><i class="fas fa-rupee-sign"></i> Loan Amount</th>
+                        <th><i class="fas fa-percentage"></i> Interest Rate</th>
+                        <th><i class="fas fa-calendar-alt"></i> Duration</th>
+                        <th><i class="fas fa-clock"></i> Date</th>
+                        <th><i class="fas fa-info-circle"></i> Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% transactions.forEach(transaction => { %>
+                    <tr>
+                        <td><%= transaction.loanId?._id || 'N/A' %></td>
+                        <td><%= transaction.loanId?.userId?.name || 'N/A' %></td>
+                        <td><%= transaction.loanId?.userId?.email || 'N/A' %></td>
+                        <td><%= transaction.loanId?.job || 'N/A' %></td>
+                        <td><%= transaction.loanId?.userId?.phone || 'N/A' %></td>
+                        <td><%= transaction.loanId?.proof || 'N/A' %></td>
+                        <td><%= transaction.loanId?.identification || 'N/A' %></td>
+                        <td><%= transaction.loanId?.purpose || 'N/A' %></td>
+                        <td>₹<%= transaction.loanId?.amount?.toLocaleString('en-IN') || 'N/A' %></td>
+                        <td><%= transaction.loanId?.interestRate?.toFixed(2) || 'N/A' %>%</td>
+                        <td><%= transaction.loanId?.repayDate ? transaction.loanId.repayDate.getFullYear() - transaction.loanId.requestDate.getFullYear() : 'N/A' %> years</td>
+                        <td><%= transaction.date?.toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }) || 'N/A' %></td>
+                        <td><span class="status <%= transaction.status?.toLowerCase() || 'unknown' %>"><%= transaction.status || 'N/A' %></span></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

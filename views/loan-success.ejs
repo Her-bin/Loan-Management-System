@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Success</title>
+    <link rel="stylesheet" href="/css/loan-success.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Loan Request Successful</h1>
+            <a href="/index" class="home-button">
+                <i class="fas fa-home"></i>
+            </a>
+        </header>
+        <main>
+            <div class="success-message">
+                <i class="fas fa-check-circle"></i>
+                <p>Your loan request has been submitted successfully.</p>
+            </div>
+            <div class="loan-details">
+                <h2>Loan Details</h2>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <span class="label">Loan ID:</span>
+                        <span class="value"><%= loanId %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Request Date:</span>
+                        <span class="value"><%= requestDate %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Proof:</span>
+                        <span class="value"><%= proof %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Identification:</span>
+                        <span class="value"><%= identification %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Purpose:</span>
+                        <span class="value"><%= purpose %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Occupation:</span>
+                        <span class="value"><%= job %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Yearly Income:</span>
+                        <span class="value"><%= income %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Loan Amount:</span>
+                        <span class="value"><%= amount %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Loan Tenure (Years):</span>
+                        <span class="value"><%= years %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Monthly Payment:</span>
+                        <span class="value"><%= monthlyPayment %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Total Payment:</span>
+                        <span class="value"><%= totalPayment %></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Total Interest:</span>
+                        <span class="value"><%= totalInterest %></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

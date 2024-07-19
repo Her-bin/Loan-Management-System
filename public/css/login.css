@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+  background: url('/Image/beautiful-color-ui-gradients-backgrounds-purple-love.png') no-repeat center center fixed; /* Background Image */
+  background-size: cover;
+}
+
+
+.container {
+  border-radius: 10px;
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  width: 320px;
+  background-color: rgba(255, 255, 255, 0.2);
+  justify-content: center;
+}
+
+  .Profile {
+    display: flex;
+    flex-direction: column;
+    color: white;
+  }
+
+  h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-size: larger;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: black;
+  }
+
+  button {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+    margin-left: 70px;
+
+    background-color: #ffffff;
+    color: #764ba2;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  button:hover {
+    background-color: #764ba2;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .signup-link a {
+    color: white;
+    font-size: 1em;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .signup-link a:hover {
+    color: #764ba2;
+    transform: scale(1.2);
+  }
+  
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 15px;
+  }
+  
+  .icon-container a {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .icon-container a:hover {
+    background-color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .icon-container a:hover i {
+    color: #764ba2;
+  }
+  
+  .icon-container i {
+    font-size: 1.8em;
+  }

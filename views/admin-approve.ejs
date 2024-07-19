@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Approve Loan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/admin-approve.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-check-circle"></i> Approve Loan Requests</h1>
+    </header>
+    <main>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th><i class="fas fa-id-card"></i> Loan ID</th>
+                        <th><i class="fas fa-user"></i> Name</th>
+                        <th><i class="fas fa-envelope"></i> Email</th>
+                        <th><i class="fas fa-phone"></i> Phone No</th>
+                        <th><i class="fas fa-dollar-sign"></i> Amount</th>
+                        <th><i class="fas fa-calendar-alt"></i> Duration (Years)</th>
+                        <th><i class="fas fa-percentage"></i> Interest Rate</th>
+                        <th><i class="fas fa-info-circle"></i> Status</th>
+                        <th><i class="fas fa-cogs"></i> Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% loans.forEach(loan => { %>
+                        <% 
+                            const tenureMonths = (new Date(loan.repayDate).getFullYear() - new Date(loan.requestDate).getFullYear()) * 12;
+                        %>
+                    <tr>
+                        <td><%= loan._id %></td>
+                        <td><%= loan.userId?.name || 'N/A' %></td>
+                        <td><%= loan.userId?.email || 'N/A' %></td>
+                        <td><%= loan.userId?.phone || 'N/A' %></td>
+                        <td><%= loan.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                        <td><%= (tenureMonths / 12) %> years</td>
+                        <td><%= loan.interestRate.toFixed(2) %>%</td>
+                        <td><span class="status <%= loan.status.toLowerCase() %>"><%= loan.status %></span></td>
+                        <td>
+                            <form action="/approve-loan/<%= loan._id %>" method="POST">
+                                <button type="submit" class="approve-btn">
+                                    <i class="fas fa-check"></i> Approve
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
