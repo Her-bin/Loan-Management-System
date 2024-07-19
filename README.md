@@ -30,6 +30,9 @@ The following dependencies are used in this project:
 ## To install these dependencies, run:
 
       npm install express mongoose body-parser express-session dotenv ejs
+      npm init -y
+      npm install express body-parser express-session dotenv mongoose
+
 
 ## Step 2: Set Up Environment Variables
 Create a .env file in the root directory of the project and add the following environment variables:
